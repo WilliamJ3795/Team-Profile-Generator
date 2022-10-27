@@ -67,12 +67,43 @@ function managerInq() {
       ])
       .then((val) => {
         if (val.what_type === "Engineer") {
-          engineerQuery();
+          engineerInq();
         } else if (val.what_type === "Intern") {
-          internQuery();
+          internInq();
         } else {
           createFile();
         }
+      });
+  }
+  function engineerInq() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: "Engineer's name?",
+        },
+        {
+          type: "input",
+          name: "id",
+          message: "Engineer's ID number:",
+        },
+        {
+          type: "input",
+          name: "email",
+          message: "Engineer's email address:",
+        },
+        {
+          type: "input",
+          name: "github",
+          message: "What is the Engineer's GitHub Username?",
+        },
+      ])
+      .then((val) => {
+        const engineer = new Engineer(val.name, val.id, val.email, val.github);
+        console.table(engineer);
+        teamMembers.push(engineer);
+        addTeamMember();
       });
   }
   
