@@ -54,4 +54,25 @@ function managerInq() {
         addTeamMember();
       });
   }
+
+  function addTeamMember() {
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "what_type",
+          message: "Add an engineer or intern to the team?",
+          choices: ["Engineer", "Intern", "Not at this time"],
+        },
+      ])
+      .then((val) => {
+        if (val.what_type === "Engineer") {
+          engineerQuery();
+        } else if (val.what_type === "Intern") {
+          internQuery();
+        } else {
+          createFile();
+        }
+      });
+  }
   
