@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const TEAMPROFILES_DIR = path.resolve(__dirname, "teamprofiles");
-const teamprofilesPath = path.join(OUTPUT_DIR, "startup.html");
+const teamprofilesPath = path.join(TEAMPROFILES_DIR, "startup.html");
 
 const render = require("./modules/htmlGenerate.js");
 
@@ -106,4 +106,48 @@ function managerInq() {
         addTeamMember();
       });
   }
+  function internInq() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: "Intern's name?",
+        },
+        {
+          type: "input",
+          name: "id",
+          message: "Intern's ID number:",
+        },
+        {
+          type: "input",
+          name: "email",
+          message: "Intern's email address:",
+        },
+        {
+          type: "input",
+          name: "school",
+          message: "What school does/did the intern attend?",
+        },
+      ])
+      .then((val) => {
+        const intern = new Intern(val.name, val.id, val.email, val.school);
+        console.table(intern)
+        teamMembers.push(intern);
+        addTeamMember();
+      });
+  }
+
+  function createFile() {
+    if (!fs.existsSync(TEAMPROFILES_DIR)) {
+      fs.mkdirSync(TEAMPROFILES_DIR);
+    } else {
+  
+      fs.writeFileSync(teamprofilesPath, render(teamMembers), "UTF-8");
+      console.log("File created in the teamprofiles folder");
+    }
+    
+  }
+  
+  start();
   
