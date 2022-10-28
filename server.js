@@ -36,3 +36,119 @@ const interns = [];
 const managers = [];
 let id = 0;
 let response;
+
+const userPrompts = () => {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Name:",
+        name: "name"
+      },
+      {
+        type: "input",
+        message: "Email:",
+        name: "email"
+      },
+      {
+        type: "list",
+        name: "role",
+        message: "What's Your Position?",
+        choices: ["Manager", "Engineer", "Intern"]
+      }
+    ])
+    // Swtich statments allows the progam to evaluate the expression
+    // then looks for the case clause whose value equals the same as the result of the input
+    . then(function(data) {
+      switch (data.role) {
+        case "Manager":
+          inquirer
+          .prompt([
+            {
+              type: "input",
+              message: "Enter employee ID: ",
+              name: "id"
+            },
+            {
+              type: "input",
+              message: "Enter office number: ",
+              name: "office"
+            }
+          ])
+          .then(function(res) {
+            const officeNum = res.office;
+            console.log(officeNum);
+            const manager = new Manager(
+              data.name,
+              res.id,
+              data.email,
+              officeNum,
+              "Manager"
+            );
+            console.log(manager);
+            employees.push(manager);})
+            .then(function(){
+              addNext()
+              });
+          break;
+        case "Engineer":
+           inquirer
+            .prompt([
+              {
+                type: "input",
+                message: "Enter employee ID: ",
+                name: "id"
+              },
+              {
+                type: "input",
+                message: "Enter github username: ",
+                name: "github"
+              }
+            ])
+            .then(function(res) {
+              const githubName = res.github;
+              const engineer = new Engineer(
+                data.name,
+                res.id,
+                data.email,
+                githubName,
+                "Engineer"
+              );
+              employees.push(engineer);
+            }).then(function(){
+              addNext()
+              });
+              break;
+              case "Intern":
+                 inquirer
+                  .prompt([
+                    {
+                      type: "input",
+                      message: "Enter employee ID: ",
+                      name: "id"
+                    },
+                    {
+                      type: "input",
+                      message: "Enter school: ",
+                      name: "school"
+                    }
+                  ])
+                  .then(function(res) {
+                    const internSchool = res.school;
+                    const intern = new Intern(
+                      data.name,
+                      res.id,
+                      data.email,
+                      internSchool,
+                      "Intern"
+                    );
+                    employees.push(intern);
+                  }).then(function(){
+                    addNext()
+                    });
+                break;
+            }
+          })
+          .then(function() {
+          });
+      };
