@@ -152,3 +152,17 @@ const userPrompts = () => {
           .then(function() {
           });
       };
+      function employeeSucess (employees){
+        console.log("Success!");
+        console.log(employees);
+        const html = generateHTML(employees);
+        console.log(html);
+        writeFileAsync("./output/employees.html", html, "utf-8");
+    }
+
+    function init(){
+      console.log("Please enter employee info")
+      userPrompts();
+    }
+    
+    init();
