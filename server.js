@@ -152,6 +152,27 @@ const userPrompts = () => {
           .then(function() {
           });
       };
+
+      const addNext = () => {
+        inquirer
+          .prompt([
+            {
+              type: "list",
+            name: "add",
+            message: "Would You Like To Add Another Employee?",
+            choices: ["Yes", "No"]
+            }
+          ])
+          .then(function(res) {
+            if (res.add === "Yes") {
+              userPrompts();
+            } else {
+              console.log("Done");
+              employeeSucess(employees);
+            }
+          });
+      };
+      
       function employeeSucess (employees){
         console.log("Success!");
         console.log(employees);
