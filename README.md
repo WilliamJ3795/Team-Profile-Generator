@@ -39,8 +39,6 @@
 
   # Functionality
 
-  -  ![Waltkthrough video explaining functionality of application](C:\Users\WIlli\Desktop\profressional-team-profile-generator\Team-Profile-Generator Walkthrough.webm)
-
   - ![gif of generated html file](Team-Profile-Generator.gif.gif)
 
   ## Questions
