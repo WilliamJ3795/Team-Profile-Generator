@@ -1,10 +1,9 @@
 function generateHTML(data) {
   return `
-
   <!DOCTYPE html>
   <html>
   <head>
-  <title>Page</title>
+  <title>Team Profile Generator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -92,7 +91,8 @@ function makeManagerCard(x) {
   return mangerCard;
 }
 function makeEngineerCard(x) {
-  let engineerCard = `
+  let engineerCard =`
+  <li>
   <div class="col-md-3">
   <div class="card cardbody">
     <div class="card-header" style="background:#7D6E83">
@@ -126,6 +126,7 @@ function makeEngineerCard(x) {
 }
 function makeInternCard(x) {
   let internCard = `
+  <li>
   <div class="col-md-3">
     <div class="card cardbody">
       <div class="card-header" style="background: #7D6E83">
