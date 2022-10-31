@@ -37,6 +37,12 @@
 
   - HTML, CSS, Bootstrap, Javascript, Node.js, Express.js, JSON, Jquery
 
+  # Functionality
+
+  -  ![Waltkthrough video explaining functionality of application](C:\Users\WIlli\Desktop\profressional-team-profile-generator\Team-Profile-Generator Walkthrough.webm)
+
+  - ![gif of generated html file](Team-Profile-Generator.gif.gif)
+
   ## Questions
   if you have any questions about the repo, open an issue or contact me directly at Williamj3795@gmail.com.
 
