@@ -2,18 +2,11 @@ const inquirer = require("inquirer");
 const jest = require("jest");
 const fs = require("fs");
 const express = require("express");
-const path = require("path");
-const axios = require("axios");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
-let pdf = require("html-pdf");
-
-let options = {
-  format: "Letter"
-};
 
 //Module Imports
-const generateHTML = require("output/generateHTML.js");
+const generateHTML = require("./output/generateHTML.js");
 const Employee = require("./lib/Employee.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
@@ -31,11 +24,7 @@ app.use(express.json());
 
 //Employees DATA
 const employees = [];
-const engineers = [];
-const interns = [];
-const managers = [];
-let id = 0;
-let response;
+
 
 const userPrompts = () => {
   inquirer
@@ -172,12 +161,12 @@ const userPrompts = () => {
             }
           });
       };
-      
+
       function employeeSucess (employees){
         console.log("Success!");
         console.log(employees);
         const html = generateHTML(employees);
-        console.log(html);
+        // console.log(html);
         writeFileAsync("./output/employees.html", html, "utf-8");
     }
 
